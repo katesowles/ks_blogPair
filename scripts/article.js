@@ -23,8 +23,6 @@ Article.prototype.toHtml = function() {
   // $newArticle.attr('data-author', this.author);
   // $newArticle.attr('data-title', this.title);
   $newArticle.attr('data-category', this.category);
-  $newArticle.attr('data-authorUrl', this.authorUrl);
-  $newArticle.attr('data-body', this.body);
 
   $newArticle.find('h1').html(this.title)
 
