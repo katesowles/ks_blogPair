@@ -1,9 +1,14 @@
 var articles = [];
 
-function Article (opts) {
+function Article (articleIndex) {
   // TODO: Use the js object passed in to complete this contructor function:
-  // Save ALL the properties of `opts` into `this`.
-  this.author = opts.author;
+  // Save ALL the properties of `articleIndex` into `this`.
+  this.title = articleIndex.title;
+  this.category = articleIndex.category;
+  this.author = articleIndex.author;
+  this.authorUrl = articleIndex.authorUrl;
+  this.publishedOn = articleIndex.publishedOn;
+  this.body = articleIndex.body;
 }
 
 Article.prototype.toHtml = function() {
