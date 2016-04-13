@@ -10,7 +10,14 @@
 
 /* TODO: Add styles for the icon-menu class. It should be bigger, and off to the right. */
 .icon-menu {
+    float: right;
+    margin: 20px;
+}
 
+.icon-menu:before {
+    display: inline-block;
+    margin-right: 20px;
+    transform: scale(1.5);
 }
 
 .main-nav {
