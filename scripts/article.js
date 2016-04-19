@@ -1,49 +1,31 @@
 var articles = [];
 
-function Article (articleIndex) {
-  // TODO: Use the js object passed in to complete this contructor function:
-  // Save ALL the properties of `articleIndex` into `this`.
-  this.title = articleIndex.title;
-  this.category = articleIndex.category;
-  this.author = articleIndex.author;
-  this.authorUrl = articleIndex.authorUrl;
-  this.publishedOn = articleIndex.publishedOn;
-  this.body = articleIndex.body;
+function Article (opts) {
+  this.author = opts.author;
+  this.authorUrl = opts.authorUrl;
+  this.title = opts.title;
+  this.category = opts.category;
+  this.body = opts.body;
+  this.publishedOn = opts.publishedOn;
 }
 
 Article.prototype.toHtml = function() {
   var $newArticle = $('article.template').clone();
-
+  $newArticle.removeClass('template');
+  if (!this.publishedOn) {
+    $newArticle.addClass('draft');
+  }
   $newArticle.attr('data-category', this.category);
-
-  // TODO: Use jQuery to fill in the template with properties
-  // from this particular Article instance. We need to fill in:
-  // the author name and url, the article title and body, and the
-  // publication date.
-  // $newArticle.attr('data-author', this.author);
-  // $newArticle.attr('data-title', this.title);
-  $newArticle.attr('data-category', this.category);
-
-  $newArticle.find('h1').html(this.title)
+  $newArticle.attr('data-author', this.author)
 
   $newArticle.find('.byline a').html(this.author);
-
-  $newArticle.find('.byline a').attr("href", this.authorUrl);
-
+  $newArticle.find('.byline a').attr('href', this.authorUrl);
+  $newArticle.find('h1:first').html(this.title);
   $newArticle.find('.article-body').html(this.body);
-
-  // Include the publication date as a 'title' attribute to show on hover:
+  $newArticle.find('time[pubdate]').attr('datetime', this.publishedOn)
   $newArticle.find('time[pubdate]').attr('title', this.publishedOn)
-
-  // Display the date as a relative number of "days ago":
   $newArticle.find('time').html('about ' + parseInt((new Date() - new Date(this.publishedOn))/60/60/24/1000) + ' days ago')
-
   $newArticle.append('<hr>');
-
-  // TODO: This cloned article is no longer a template, so we should remove that class...
-
-  $newArticle.removeClass('template');
-
   return $newArticle;
 }
 
