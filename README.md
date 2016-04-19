@@ -1,2 +1,5 @@
-# ks_blogPair
-https://github.com/codefellows/portland-301d3/tree/master/class-01-jquery-and-the-dom/pair-assignment
+# Static MVC Blog
+
+This is a simple blogging system front end. The code is organized with MVC principles in mind.
+
+It starts small, but will be gaining new features regularly. 
